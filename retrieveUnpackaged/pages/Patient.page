@@ -1,0 +1,126 @@
+<apex:page standardController="Patient__c" extensions="PatientController" tabStyle="Patient__c" showHeader="true">
+        <apex:outputPanel id="selectDevice">
+            <apex:form >
+                <apex:pageMessages id="errmsgs"/>
+                <apex:pageBlock >                    
+                        <apex:pageBlockButtons >
+                            <apex:commandButton value="Save" action="{!save}" status="status" rendered="{!AND((NOT(CONTAINS($CurrentPage.URL,'&inline=1'))),(access))}"/>
+                            <apex:commandButton value="Cancel" action="{!cancel}" status="status" rendered="{!AND((NOT(CONTAINS($CurrentPage.URL,'&inline=1'))),(access))}"/>
+                        </apex:pageBlockButtons>
+                    <apex:pageBlockSection columns="2">
+                        <apex:repeat value="{!publicFields}" var="publicField">
+                            <apex:outputField value="{!Patient__c[publicField]}"/>
+                        </apex:repeat>     
+                    </apex:pageBlockSection>
+
+
+
+                    <apex:pageBlockSection rendered="{!(!access)}">
+                        <apex:outputLabel value="You are accessing confidential information. Your access will be logged." for="Access"/><apex:commandButton action="{!access}" value="Access" id="Access"/>   
+                    </apex:pageBlockSection>
+<!--
+                    <apex:pageBlockSection title="Confidential" rendered="{!(access)}" columns="2">       
+                        <apex:repeat value="{!privateFields}" var="privateField">
+                            <apex:outputField value="{!Patient__c[privateField]}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                            <apex:inputField value="{!Patient__c[privateField]}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+                        </apex:repeat>     
+                    </apex:pageBlockSection>            
+-->                    
+                    <apex:pageBlockSection title="Information" rendered="{!(access)}" columns="2">       
+                        <apex:outputField value="{!Patient__c.FirstName__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.FirstName__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.MaidenName__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.MaidenName__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.LastName__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.LastName__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}" required="true"/>
+                    </apex:pageBlockSection>    
+    
+                            
+                    <apex:pageBlockSection title="Address Information" rendered="{!(access)}" columns="2">       
+                                                                                               
+                        <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="Street / Nr" for="patient_street"/>
+                            <apex:pageBlockSectionItem >
+                                <apex:pageBlockSectionItem >
+                                    <apex:inputField id="patient_street" value="{!Patient__c.Street__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+                                    <apex:inputField value="{!Patient__c.HouseNumber__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+                                </apex:pageBlockSectionItem>
+                                <apex:pageBlockSectionItem >
+                                    <apex:outputField value="{!Patient__c.Street__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>
+                                    <apex:pageBlockSectionItem >
+                                        <apex:outputLabel value=" , " for="patient_housenumber" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>
+                                        <apex:outputField id="patient_housenumber" value="{!Patient__c.HouseNumber__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>
+                                    </apex:pageBlockSectionItem>
+                                </apex:pageBlockSectionItem>
+                            </apex:pageBlockSectionItem>                         
+                        </apex:pageBlockSectionItem>
+                        
+                        <apex:outputField value="{!Patient__c.PostalCode__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.PostalCode__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.City__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.City__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.Country__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Country__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}" required="true" />
+
+                        <apex:outputField value="{!Patient__c.HomePhone__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.HomePhone__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.Email__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Email__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.MobilePhone__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.MobilePhone__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.Fax__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Fax__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+ 
+                        <apex:outputField value="{!Patient__c.OfficePhone__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.OfficePhone__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+ 
+                        <apex:outputField value="{!Patient__c.Language__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Language__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}" required="true" />
+                    
+                    </apex:pageBlockSection>                         
+
+                           
+                    <apex:pageBlockSection title="Information" rendered="{!(access)}" columns="2">                          
+                        <apex:outputField value="{!Patient__c.Inactive__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Inactive__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.ConsentApproval__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.ConsentApproval__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}" required="true"/>
+
+                        <apex:outputField value="{!Patient__c.InactiveReason__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.InactiveReason__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+                     
+                        <apex:outputField value="{!Patient__c.InsuranceName__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.InsuranceName__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.InactiveDate__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.InactiveDate__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.PatientInsuranceId__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.PatientInsuranceId__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.Birthdate__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Birthdate__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.MarketingInformation__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.MarketingInformation__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.Gender__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.Gender__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                        <apex:outputField value="{!Patient__c.ClinicalStudiesCandidate__c}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')}"/>   
+                        <apex:inputField value="{!Patient__c.ClinicalStudiesCandidate__c}" rendered="{!NOT(CONTAINS($CurrentPage.URL,'&inline=1'))}"/>
+
+                    </apex:pageBlockSection>     
+                                         
+                </apex:pageBlock>                    
+            </apex:form>            
+        </apex:outputPanel>
+</apex:page>

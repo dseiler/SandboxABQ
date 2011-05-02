@@ -1,0 +1,16 @@
+<apex:component controller="DeliveryComponentController">
+    <apex:attribute name="delivery" assignTo="{!delivery}" type="Delivery__c" description="List of OrderItems" />
+    <apex:attribute name="deliveryType" type="string" description="deliveryType: Delivery, Return"/>
+    <apex:attribute name="fieldList" assignTo="{!fieldList}" type="String[]" description="" />
+    
+    <apex:pageBlock rendered="{!(orderItems.size > 0)}">
+        <apex:outputLink value="../../{!delivery.Id}">
+            <apex:outputText style="font:bold;font-size:20px" value="{!deliveryType} {0} (Goods issue date: {1})">
+                <apex:param value="{!delivery.Name}"/>
+                <apex:param value="{!delivery.GoodsIssueDate__c}"/>
+            </apex:outputText>
+        </apex:outputLink>
+        <apex:detail subject="{!delivery.Id}" relatedList="false" title="false"/>
+        <c:OrderItemListComponent orderItems="{!orderItems}" itemType="{!deliveryType} Items" fieldList="{!fieldList}" rendered="{!(orderItems.size > 0)}"/>
+    </apex:pageBlock>
+</apex:component>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Activated__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Equipment / JEST-STAT / JEST-INACT / Flag for Status ‘Activated’ set</description>
+        <externalId>false</externalId>
+        <label>Activated</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AtCustomer__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Equipment / JEST-STAT / JEST-INACT / Flag for Status ‘At Customer site’ set</description>
+        <externalId>false</externalId>
+        <label>At Customer Site</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>BatchNumber__c</fullName>
+        <description>VBAP-CHARG / LIPS-CHARG /</description>
+        <externalId>false</externalId>
+        <label>Batch Number</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Blocked__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Equipment / JEST-STAT / JEST-INACT / Flag for Status ‘Blocked’ in combination with ‘batch in restricted use stock’</description>
+        <externalId>false</externalId>
+        <label>Blocked</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>EquipmentNumber__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Equipment / EQUI-EQUNR / SAP Equipment number</description>
+        <externalId>true</externalId>
+        <label>Equipment Number</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>ExpiryDate__c</fullName>
+        <description>Equipment / MCH1-VFDAT / Shelf life expiration date</description>
+        <externalId>false</externalId>
+        <label>Expiry Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>MaterialDesc__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <formula>Material__r.MaterialDesc__c</formula>
+        <label>Material Description</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Material__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Model Number</label>
+        <referenceTo>Material__c</referenceTo>
+        <relationshipLabel>Equipments</relationshipLabel>
+        <relationshipName>Equipments</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SapMaterialNumber__c</fullName>
+        <description>Equipment / EQUI-MATNR / Optional technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>Material__r.MaterialNumber__c</formula>
+        <label>SAP Material Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SerialNumber__c</fullName>
+        <description>Equipment / EQUI-SERNR /</description>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Equipment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Material__c</columns>
+        <columns>AtCustomer__c</columns>
+        <columns>ExpiryDate__c</columns>
+        <columns>Activated__c</columns>
+        <columns>Blocked__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Serial Number</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Equipments</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Material__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>AtCustomer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ExpiryDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Activated__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Blocked__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Material__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>AtCustomer__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ExpiryDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Activated__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Blocked__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Material__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>AtCustomer__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ExpiryDate__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Activated__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Blocked__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Material__c</searchFilterFields>
+        <searchFilterFields>AtCustomer__c</searchFilterFields>
+        <searchFilterFields>ExpiryDate__c</searchFilterFields>
+        <searchFilterFields>Activated__c</searchFilterFields>
+        <searchFilterFields>Blocked__c</searchFilterFields>
+        <searchResultsAdditionalFields>Material__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>AtCustomer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ExpiryDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Activated__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Blocked__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

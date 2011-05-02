@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>BatchNumber__c</fullName>
+        <description>Contract Item / VBAP-CHARG  /</description>
+        <externalId>false</externalId>
+        <label>Batch Number</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ChangeDate__c</fullName>
+        <description>Contract Item / VBAP-AEDAT /</description>
+        <externalId>false</externalId>
+        <label>Change Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ContractType__c</fullName>
+        <externalId>false</externalId>
+        <formula>ServiceContract__r.ContractType__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contract Type</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CreationDate__c</fullName>
+        <description>Contract Item / VBAP-ERDAT /</description>
+        <externalId>false</externalId>
+        <label>Creation Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Currency__c</fullName>
+        <externalId>false</externalId>
+        <formula>ServiceContract__r.Currency__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Currency</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Customer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>R00NM0000000JtvaMAC</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Contract Items</relationshipLabel>
+        <relationshipName>ContractItems</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>/</description>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>ItemCategoryDesc__c</fullName>
+        <description>Contract Item /  / Description of Item Category</description>
+        <externalId>false</externalId>
+        <label>Description of Item Category</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemCategory__c</fullName>
+        <description>Contract Item / VBAP-PSTYV /</description>
+        <externalId>false</externalId>
+        <label>Item Category</label>
+        <length>4</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemNetValue__c</fullName>
+        <description>Contract Item / VBAP-NETWR /</description>
+        <externalId>false</externalId>
+        <label>Item Net Value</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemNumber__c</fullName>
+        <description>Contract Item / VBAP-POSNR /</description>
+        <externalId>false</externalId>
+        <label>Item Number</label>
+        <length>6</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaterialDesc__c</fullName>
+        <description>Contract Item / VBAP-ARKTX /</description>
+        <externalId>false</externalId>
+        <label>Material Description</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Material__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Model Number</label>
+        <referenceTo>Material__c</referenceTo>
+        <relationshipLabel>Contract Items</relationshipLabel>
+        <relationshipName>ContractItems</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Patient__c</fullName>
+        <externalId>false</externalId>
+        <formula>ServiceContract__r.Patient__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Patient</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Quantity__c</fullName>
+        <description>Contract Item / VBAP-ZMENG   /</description>
+        <externalId>false</externalId>
+        <label>Quantity</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SalesUnit__c</fullName>
+        <description>Contract Item / VBAP-VRKME  /</description>
+        <externalId>false</externalId>
+        <label>Sales Unit</label>
+        <length>3</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ServiceContract__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Service Contract</label>
+        <referenceTo>ServiceContract__c</referenceTo>
+        <relationshipName>ContractItems</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ValidityEndDate__c</fullName>
+        <description>Contract Item / VEDA-VENDDAT /</description>
+        <externalId>false</externalId>
+        <label>Validity End Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ValidityStartDate__c</fullName>
+        <description>Contract Item / VEDA-VBEGDAT  /</description>
+        <externalId>false</externalId>
+        <label>Validity Start Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <label>Contract Item</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Contract Item Number</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Contract Items</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>ItemCategory__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Quantity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SalesUnit__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ValidityEndDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ValidityStartDate__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>ItemCategory__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Quantity__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>SalesUnit__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ValidityEndDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ValidityStartDate__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ItemCategory__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Quantity__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>SalesUnit__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ValidityEndDate__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ValidityStartDate__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>ItemCategory__c</searchFilterFields>
+        <searchFilterFields>Quantity__c</searchFilterFields>
+        <searchFilterFields>SalesUnit__c</searchFilterFields>
+        <searchFilterFields>ValidityEndDate__c</searchFilterFields>
+        <searchFilterFields>ValidityStartDate__c</searchFilterFields>
+        <searchResultsAdditionalFields>ItemCategory__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Quantity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SalesUnit__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ValidityEndDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ValidityStartDate__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

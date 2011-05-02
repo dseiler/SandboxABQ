@@ -1,0 +1,53 @@
+<apex:component controller="GenericLookupFieldComponentController">
+    <apex:attribute name="medicalRecord" description="MedicalRecord__c" type="MedicalRecord__c" required="true" assignTo="{!med}"/>
+    <apex:attribute name="field" type="String" description="TODO: Describe me" assignTo="{!field}"/>
+    <apex:attribute name="nameFieldName" description="MedicalRecord__c" type="String" required="true" assignTo="{!nameFieldName}"/>
+    <apex:attribute name="required" description="required" type="Boolean" required="false" default="false"/>
+
+    <apex:panelGroup layout="block" styleClass="requiredInput">
+        <apex:panelGroup layout="block" styleClass="requiredBlock" rendered="{!required}" />
+        <apex:inputHidden value="{!medicalRecord[field]}" id="HTMLIdFieldId"/>
+        <apex:inputText required="true" value="{!medicalRecord[nameFieldReference][nameFieldName]}" size="20"  id="HTMLNameFieldId" disabled="true" onFocus="this.blur();closeLookupPopup();" /> 
+        <a href="#" onclick="openLookupPopup('{!$Component.HTMLNameFieldId}', '{!$Component.HTMLIdFieldId}', '{!field}', '{!nameFieldName}'); return false">
+            <img src="/s.gif" alt="Patient Lookup (New Window)" class="lookupIcon" onblur="this.className = 'lookupIcon';" onfocus="this.className = 'lookupIconOn';" onmouseout="this.className = 'lookupIcon';this.className = 'lookupIcon';" onmouseover="this.className = 'lookupIconOn';this.className = 'lookupIconOn';" title="Patient Lookup (New Window)"/>
+        </a>
+    </apex:panelGroup>
+</apex:component>    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<!--
+    <apex:attribute name="nameFieldReference" description="MedicalRecord__c" type="String" required="true" assignTo="{!nameFieldReference}"/>
+    <apex:attribute name="object" description="MedicalRecord__c" type="String" required="true"/>
+    <apex:attribute name="idFieldName" description="MedicalRecord__c" type="String" required="true"/>
+    <apex:attribute name="object" description="MedicalRecord__c" type="String" required="true"/>
+    <apex:attribute name="fields" description="MedicalRecord__c" type="String" required="true"/>
+    <apex:attribute name="where" description="MedicalRecord__c" type="String" required="true"/>
+        <a href="#" onclick="openLookupPopup('{!$Component.HTMLNameFieldId}', '{!$Component.HTMLIdFieldId}', '{!object}', '{!fields}', '{!where}'); return false">
+value="{!medicalRecord[nameFieldReference][nameFieldName]}"
+        <apex:inputText value="{!nameField}" size="40"  id="HTMLNameFieldId" disabled="false" onFocus="this.blur();closeLookupPopup();"/> 
+        <apex:outputText value="{!medicalRecord[nameFieldReference][nameFieldName]}"  id="HTMLNameFieldId"/> 
+        <apex:inputText value="{!nameField}" size="40"  id="HTMLNameFieldId" disabled="false" onFocus="this.blur();closeLookupPopup();"/> 
+        <apex:inputText value="{!medicalRecord[nameFieldReference][nameFieldName]}" size="40"  id="HTMLNameFieldId" disabled="false" onFocus="this.blur();closeLookupPopup();"/> 
+<apex:outputText value="{!medicalRecord[nameFieldReference][nameFieldName]}"  id="HTMLNameFieldId"/>
+        <div id = "{!idFieldName}">
+        </div>
+<apex:actionFunction action="{!changedAction}" name="changedAction{!field}" rerender="pgroup"/>
+        <a href="#" onclick="openLookupPopup('{!$Component.HTMLNameFieldId}', '{!$Component.HTMLIdFieldId}', '{!field}',new function() {changedAction{!field}();}); return false">
+
+        <a href="#" onclick="openLookupPopup('{!$Component.HTMLNameFieldId}', '{!$Component.HTMLIdFieldId}', '{!field}'); return false">
+
+{!nameFieldReference}   
+-->

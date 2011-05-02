@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>BatchNumber__c</fullName>
+        <description>VBAP-CHARG / LIPS-CHARG /</description>
+        <externalId>false</externalId>
+        <label>Batch Number</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ChangeDate__c</fullName>
+        <description>VBAP-AEDAT / LIPS-AEDAT /</description>
+        <externalId>false</externalId>
+        <label>Change Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>CreationDate__c</fullName>
+        <description>VBAP-ERDAT / LIPS-ERDAT /</description>
+        <externalId>false</externalId>
+        <label>Creation Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Customer__c</fullName>
+        <externalId>false</externalId>
+        <formula>Order__r.Customer__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Delivery Number</label>
+        <referenceTo>Delivery__c</referenceTo>
+        <relationshipLabel>Order Items</relationshipLabel>
+        <relationshipName>OrderItems</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>/</description>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>ItemCategoryDesc__c</fullName>
+        <description>TVAPT-VTEXT / LIPS-VTEXT /</description>
+        <externalId>false</externalId>
+        <label>Item Category Description</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemCategory__c</fullName>
+        <description>VBAP-PSTYV / LIPS-PSTYV /</description>
+        <externalId>false</externalId>
+        <label>Item Category</label>
+        <length>4</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemNetValue__c</fullName>
+        <description>( = vbap-netwr * delivery quantity / order quantity) /</description>
+        <externalId>false</externalId>
+        <label>Item Net Value</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemNumber__c</fullName>
+        <description>Open Item / VBAP-POSNR / SAP Item number
+Return Item / VBAP-POSNR
+Delivery Item / LIPS-POSNR</description>
+        <externalId>false</externalId>
+        <label>Item Number</label>
+        <length>6</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ItemType__c</fullName>
+        <description>/ in, out or cons.</description>
+        <externalId>false</externalId>
+        <label>Item Type</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaterialDesc__c</fullName>
+        <description>VBAP-ARKTX
+LIPS -ARKTX /</description>
+        <externalId>false</externalId>
+        <label>Material Description</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Material__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Model Number</label>
+        <referenceTo>Material__c</referenceTo>
+        <relationshipLabel>Order Items</relationshipLabel>
+        <relationshipName>OrderItems</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OrderQuantity__c</fullName>
+        <description>VBAP-KWMENG
+LIPS -LIFMG /</description>
+        <externalId>false</externalId>
+        <label>Order Quantity</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Order__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Order Number</label>
+        <referenceTo>Order__c</referenceTo>
+        <relationshipLabel>Order Items</relationshipLabel>
+        <relationshipName>OrderItems</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Patient__c</fullName>
+        <externalId>false</externalId>
+        <formula>Order__r.Patient__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Patient</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PlannedDeliveryDate__c</fullName>
+        <description>To be defined by Urs Henle / The planned delivery date for each order item. The actual delivery date can be found on the delivery record.</description>
+        <externalId>false</externalId>
+        <label>Planned Delivery Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SalesText__c</fullName>
+        <description>Sales Text / TLINE-TDLINE /</description>
+        <externalId>false</externalId>
+        <label>Sales Text</label>
+        <length>72</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SalesUnit__c</fullName>
+        <description>VBAP-VRKME / LIPS -VRKME /</description>
+        <externalId>false</externalId>
+        <label>Sales Unit</label>
+        <length>3</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapDeliveryNumber__c</fullName>
+        <description>/ Optional  technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>Delivery__r.DeliveryNumber__c</formula>
+        <label>SAP Delivery Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapMaterialDesc__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <formula>Material__r.MaterialDesc__c</formula>
+        <label>SAP Material Description</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapMaterialNumber__c</fullName>
+        <description>Open Item / VBAP-MATNR
+Return Item / VBAP-MATNR
+Delivery Item / LIPS -MATNR / Optional  technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>Material__r.MaterialNumber__c</formula>
+        <label>SAP Material Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapOrderNumber__c</fullName>
+        <description>/ Optional  technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>Order__r.OrderNumber__c</formula>
+        <label>SAP Order Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Order Item</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Order Item Number</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Order Items</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>ItemType__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Order__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OrderQuantity__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ItemNetValue__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SalesUnit__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PlannedDeliveryDate__c</customTabListAdditionalFields>
+        <searchFilterFields>ItemType__c</searchFilterFields>
+        <searchFilterFields>Order__c</searchFilterFields>
+        <searchFilterFields>OrderQuantity__c</searchFilterFields>
+        <searchFilterFields>ItemNetValue__c</searchFilterFields>
+        <searchFilterFields>SalesUnit__c</searchFilterFields>
+        <searchFilterFields>PlannedDeliveryDate__c</searchFilterFields>
+        <searchResultsAdditionalFields>ItemType__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Order__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OrderQuantity__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ItemNetValue__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SalesUnit__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PlannedDeliveryDate__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Case.Complaint Process</members>
+        <name>BusinessProcess</name>
+    </types>
+    <types>
+        <members>PatientManagement</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Account.CenterType__c</members>
+        <members>Account.City__c</members>
+        <members>Account.Country__c</members>
+        <members>Account.CustomerId__c</members>
+        <members>Account.Email__c</members>
+        <members>Account.HouseNumber__c</members>
+        <members>Account.LS_CustomerId__c</members>
+        <members>Account.Language__c</members>
+        <members>Account.Name2__c</members>
+        <members>Account.Name3__c</members>
+        <members>Account.Name4__c</members>
+        <members>Account.PostalCode__c</members>
+        <members>Account.Region__c</members>
+        <members>Account.Status__c</members>
+        <members>Account.Street__c</members>
+        <members>Case.AffectedPatient__c</members>
+        <members>Case.AwarenessDate__c</members>
+        <members>Case.ComplaintClassification__c</members>
+        <members>Case.ContactInformation__c</members>
+        <members>Case.Customer__c</members>
+        <members>Case.DueDate__c</members>
+        <members>Case.EquipmentMaterialNumber__c</members>
+        <members>Case.Equipment__c</members>
+        <members>Case.FollowUpAction__c</members>
+        <members>Case.ImplantType__c</members>
+        <members>Case.InvolveExplant__c</members>
+        <members>Case.IssueDate__c</members>
+        <members>Case.Material__c</members>
+        <members>Case.NetRegID__c</members>
+        <members>Case.PrimarySymptomCode__c</members>
+        <members>Case.Public__c</members>
+        <members>Case.ReportingPatient__c</members>
+        <members>Case.ReturnOrder__c</members>
+        <members>Case.SecondarySymptomCode__c</members>
+        <members>Case.SoftwareType__c</members>
+        <members>Contact.AcademicTitle__c</members>
+        <members>Contact.City__c</members>
+        <members>Contact.Country__c</members>
+        <members>Contact.Credentials__c</members>
+        <members>Contact.HouseNumber__c</members>
+        <members>Contact.IsActive__c</members>
+        <members>Contact.LS_ObservationText__c</members>
+        <members>Contact.LS_ProfessionalId__c</members>
+        <members>Contact.Language__c</members>
+        <members>Contact.LegacySystemName__c</members>
+        <members>Contact.PostalCode__c</members>
+        <members>Contact.ProfessionalId__c</members>
+        <members>Contact.QualificationDate__c</members>
+        <members>Contact.RecordTypeLabel__c</members>
+        <members>Contact.Region__c</members>
+        <members>Contact.Street__c</members>
+        <members>Contact.TrainingStatus__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomLabels</name>
+    </types>
+    <types>
+        <members>ContractItem__c</members>
+        <members>Delivery__c</members>
+        <members>Equipment__c</members>
+        <members>Log__c</members>
+        <members>Material__c</members>
+        <members>MedicalRecord__c</members>
+        <members>OrderItemEquipment__c</members>
+        <members>OrderItem__c</members>
+        <members>Order__c</members>
+        <members>Patient__c</members>
+        <members>RelationCustomerPatient__c</members>
+        <members>RelationCustomerProfessional__c</members>
+        <members>RelationPatientContact__c</members>
+        <members>RelationProfessionalPatient__c</members>
+        <members>ServiceContract__c</members>
+        <members>SystemId__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomPageWebLink</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomSite</name>
+    </types>
+    <types>
+        <members>ActivationReport</members>
+        <members>ContractItem__c</members>
+        <members>Delivery__c</members>
+        <members>Equipment__c</members>
+        <members>Log__c</members>
+        <members>Material__c</members>
+        <members>MedicalRecord__c</members>
+        <members>OperativeReport</members>
+        <members>OrderItemEquipment__c</members>
+        <members>OrderItem__c</members>
+        <members>Order__c</members>
+        <members>Patient__c</members>
+        <members>Patient__c</members>
+        <members>RelationCustomerPatient__c</members>
+        <members>RelationCustomerProfessional__c</members>
+        <members>RelationPatientContact__c</members>
+        <members>RelationProfessionalPatient__c</members>
+        <members>ServiceContract__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Dashboard</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Document</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Account-CustomerLayout</members>
+        <members>Case-ComplaintLayout</members>
+        <members>CaseClose-ComplaintLayoutClose</members>
+        <members>Contact-PatientContactLayout</members>
+        <members>Contact-ProfessionalLayout</members>
+        <members>ContractItem__c-ContractItem Layout</members>
+        <members>Delivery__c-Delivery Layout</members>
+        <members>Equipment__c-Equipment Layout</members>
+        <members>Log__c-Log Layout</members>
+        <members>Material__c-Material Layout</members>
+        <members>MedicalRecord__c-DeviceRegistrationLayout</members>
+        <members>MedicalRecord__c-MedicalRecord Layout</members>
+        <members>MedicalRecord__c-SurgeryReportLayout</members>
+        <members>OrderItemEquipment__c-OrderItemEquipment Layout</members>
+        <members>OrderItem__c-OrderItem Layout</members>
+        <members>Order__c-Order Layout</members>
+        <members>Patient__c-Patient Layout</members>
+        <members>Patient__c-Patient View Layout</members>
+        <members>RelationCustomerPatient__c-RelationCustomerPatient Layout</members>
+        <members>RelationCustomerProfessional__c-RelationCustomerProfessional Layout</members>
+        <members>RelationPatientContact__c-RelationPatientContact Layout</members>
+        <members>RelationProfessionalPatient__c-ReleationProfessionalPatient Layout</members>
+        <members>ServiceContract__c-ServiceContract Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>AB Basic User</members>
+        <members>AB Power User</members>
+        <members>AB Super User</members>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>Account.Clinic</members>
+        <members>Account.Distributor</members>
+        <members>Account.Other</members>
+        <members>Case.Complaint</members>
+        <members>Contact.Audiologist</members>
+        <members>Contact.PatientContact</members>
+        <members>Contact.Surgeon</members>
+        <name>RecordType</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ValidationRule</name>
+    </types>
+    <types>
+        <members>Patient__c</members>
+        <name>Workflow</name>
+    </types>
+    <version>21.0</version>
+</Package>

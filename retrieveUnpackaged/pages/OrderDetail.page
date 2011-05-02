@@ -1,0 +1,42 @@
+<apex:page standardController="Order__c" extensions="OrderDetailController">
+   <!--
+    <apex:styleSheet value="{!URLFOR($Resource.web_style,'css/styles.css')}"/> 
+
+    <style>
+        .pbHeader {
+           display:none;
+        }
+    </style>
+   
+   <!--
+    <style>
+        div#ep_{!(SUBSTITUTE($component.orderdetail,':','_'))} .pbHeader{
+           display:none;
+        }
+    </style>
+   -->    
+
+    <style>
+        .bDetailBlock .pbHeader{
+           display:none;
+        }
+    </style>
+     
+    <apex:detail subject="{!Order__c.Id}" relatedList="false" title="true"  id="orderdetail" /> 
+      
+    <c:OrderItemListComponent orderItems="{!orderItems}" itemType="{!('Open Items')}" fieldList="{!orderItemFieldList}" rendered="{!(orderItems.size > 0)}"/>
+    <apex:outputText rendered="{!(orderItems.size == 0)}" ><h2 class="mainTitle">Keine offenen Items</h2></apex:outputText> 
+
+    <c:OrderItemListComponent orderItems="{!returnOrderItems}" itemType="{!('Return Items')}" fieldList="{!returnOrderItemFieldList}" rendered="{!(returnOrderItems.size > 0)}"/>
+    <apex:outputText rendered="{!(returnOrderItems.size == 0)}" ><h2 class="mainTitle">Keine offenen Return Items</h2></apex:outputText> 
+
+
+
+    <apex:repeat value="{!deliveries}" var="delivery">    
+        <c:DeliveryComponent delivery="{!delivery}" deliveryType="Delivery" fieldList="{!deliveryItemFieldList}" />
+    </apex:repeat>  
+    <apex:repeat value="{!returnDeliveries}" var="delivery">
+        <c:DeliveryComponent delivery="{!delivery}" deliveryType="Return" fieldList="{!returnDeliveryItemFieldList}" />
+    </apex:repeat>  
+    
+</apex:page>

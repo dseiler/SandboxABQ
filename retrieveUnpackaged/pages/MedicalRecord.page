@@ -1,0 +1,269 @@
+<apex:page standardController="MedicalRecord__c" extensions="MedicalRecordController" tabStyle="MedicalRecord__c" id="MedicalRecord">
+<!--
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript">
+       var j$ = jQuery.noConflict();
+      });
+    </script>
+    -->
+    <script>
+        var myRetFunc = null;
+        var newWin=null;
+        
+        // to prevent the calendar element having the focus and popping up
+        function setFocusOnLoad() {} 
+
+        function openLookupPopup(name, id, field,namefield)
+        {
+            var url="/apex/MedicalRecordLookup?namefield=" + name + "&idfield=" + id + "&Field=" + field+ "&NameFieldName=" + namefield; 
+//            newWin=window.open(url, 'Popup','height=500,width=600,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no,dependent=yes');
+            newWin=window.open(url, 'Popup','height=1000,width=1200,left=100,top=100,resizable=no,scrollbars=yes,toolbar=no,status=no,dependent=yes');
+
+            if (window.focus) 
+            {
+                newWin.focus();               
+            }
+            
+            return false;
+        }
+                      
+        function closeLookupPopup(newLocation)
+        {
+           if (null!=newWin)
+           {
+              newWin.close();
+           } 
+           if (null!=newLocation)
+           {
+              window.open(newLocation,"mywindow");
+           }             
+        }
+        
+
+
+        
+        function setRetFunc(retfunc)
+        {
+            myRetFunc = retfunc;
+            pushDataToPopup();    
+        }
+        
+        function pushData(json) {
+//            alert("pushData " + myRetFunc);
+            myRetFunc(json);        
+        }
+    </script>
+    
+    
+    
+    
+    
+    <apex:outputPanel id="jspanel"> 
+        <apex:outputText value="{!json}" rendered="{!$Organization.Id =='00DM00000008zsoMAA'}"/>
+        <script>          
+             pushData('{!json}');
+
+//            function getRecordFieldValue(field) {
+//                var myObject = eval('({!json})');
+//                return myObject[field.toLowerCase()];
+//            }            
+//            alert("myRetFunc "+myRetFunc );
+        </script>
+    </apex:outputPanel>
+        
+    
+    <apex:outputPanel id="record">        
+        <apex:form id="form">        
+            <apex:actionFunction action="{!changedAction}" name="changedAction" rerender="contentBlock,jspanel" />
+            <apex:actionFunction name="pushDataToPopup" rerender="jspanel"/>            
+            <apex:sectionHeader title="{!pageTitle}"/>            
+            <apex:pageMessages id="errmsgs"/>
+            
+            <apex:pageBlock id="contentBlock" tabStyle="ActivationReport__tab">                
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Save" action="{!cust_save}" status="status"/>
+                    <apex:commandButton value="Cancel" action="{!cancel}" status="status"/>
+                </apex:pageBlockButtons>
+                
+                
+                <apex:pageBlockSection columns="2" id="surgeryPatientInformation" title="Patient Information" rendered="{!isSurgery}">    
+                    <apex:pageBlockSectionItem rendered="{!MedicalRecord__c.Id == null}">
+                        <apex:outputLabel value="Patient"/>
+                        <c:GenericLookupFieldComponent medicalRecord="{!MedicalRecord__c}"  
+                            field="Patient__c"
+                            nameFieldName="Name"     
+                            required="true"                           
+                        />
+                    </apex:pageBlockSectionItem>  
+                    
+                    <apex:outputField value="{!MedicalRecord__c.Patient__c}" rendered="{!MedicalRecord__c.Id != null}"  />           
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Surgery Date" for="ActivityDate__c"/>   
+                        <c:FakeRequiredComponent >
+                            <apex:inputField value="{!MedicalRecord__c.ActivityDate__c}" id="ActivityDate__c"/>
+                        </c:FakeRequiredComponent>                                                              
+                    </apex:pageBlockSectionItem>   
+                                         
+                    <apex:inputField value="{!MedicalRecord__c.ImplantedEar__c}"/>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$ObjectType.MedicalRecord__c.fields.SurgeryType__c.label}" for="ActivityDate__c"/>   
+                        <c:FakeRequiredComponent >
+                            <apex:inputField value="{!MedicalRecord__c.SurgeryType__c}"> 
+                                <apex:actionSupport event="onchange" reRender="jspanel,surgeryPatientInformation"/>
+                            </apex:inputField>        
+                        </c:FakeRequiredComponent>                                                              
+                    </apex:pageBlockSectionItem> 
+                                        
+                    <apex:pageBlockSectionItem rendered="{!MedicalRecord__c.SurgeryType__c=='Reimplantation'}"/>                    
+                                        
+                    <apex:pageBlockSectionItem rendered="{!MedicalRecord__c.SurgeryType__c=='Reimplantation'}">
+                        <apex:outputLabel value="SN of replaced implant"/>
+                        <c:GenericLookupFieldComponent medicalRecord="{!MedicalRecord__c}" 
+                            field="ReplacedDevice__c"
+                            nameFieldName="Name"                                
+                        />
+                    </apex:pageBlockSectionItem>
+                                                       
+                </apex:pageBlockSection>    
+                
+                <apex:pageBlockSection columns="2" id="activationPatientInformation" title="Patient Information" rendered="{!isActivation}" >    
+                    <apex:pageBlockSectionItem rendered="{!MedicalRecord__c.Id == null}">
+                        <apex:outputLabel value="Patient"/>
+                        <c:GenericLookupFieldComponent medicalRecord="{!MedicalRecord__c}"  
+                            field="Patient__c"
+                            nameFieldName="Name"      
+                            required="true"                                                                                     
+                        />
+                    </apex:pageBlockSectionItem>     
+                    <apex:outputField value="{!MedicalRecord__c.Patient__c}"  rendered="{!MedicalRecord__c.Id != null}"  />           
+                    
+                    <!--
+                    <apex:inputField value="{!MedicalRecord__c.Surgery__c}" rendered="{!MedicalRecord__c.Id == null}" >
+                    <apex:actionSupport action="{!changedAction}" event="onchange" rerender="contentBlock,jspanel" />
+                    </apex:inputField>                       
+                    <apex:outputField value="{!MedicalRecord__c.Surgery__c}"  rendered="{!MedicalRecord__c.Id != null}"  />
+                    
+                    -->
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Registration Date" for="ActivityDate__c"/>   
+                        <c:FakeRequiredComponent >
+                            <apex:inputField value="{!MedicalRecord__c.ActivityDate__c}" id="ActivityDate__c"/>
+                        </c:FakeRequiredComponent>                                                              
+                    </apex:pageBlockSectionItem>   
+                    
+                
+                </apex:pageBlockSection>    
+                
+                
+                <apex:pageBlockSection columns="2" id="surgeryClinicInformation" title="Clinic Information" rendered="{!OR(isSurgery,isActivation)}">    
+                    <apex:inputField value="{!MedicalRecord__c.Customer__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.Professional__c}"/>                        
+
+                    <apex:inputField value="{!custPatient.ClinicPatientId__c}"/>                        
+                    <!--                        
+                    <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Professional"/>
+                    <c:GenericLookupField medicalRecord="{!MedicalRecord__c}" 
+                    field="Professional__c"
+                    nameFieldName="Name"                                
+                    />
+                    </apex:pageBlockSectionItem>                
+                    -->
+                </apex:pageBlockSection>    
+                
+                <apex:pageBlockSection columns="2" id="surgeryDeviceInformation" title="Device Information" rendered="{!isSurgery}">    
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Serial Number"/>
+                    <c:GenericLookupFieldComponent medicalRecord="{!MedicalRecord__c}" 
+                        field="Equipment__c"
+                        nameFieldName="Name"                                
+                    />
+                    </apex:pageBlockSectionItem>
+                    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$ObjectType.MedicalRecord__c.fields.Material__c.label}" for="ActivityDate__c"/>   
+                        <c:FakeRequiredComponent >
+                            <apex:inputField value="{!MedicalRecord__c.Material__c}"/>                                
+                        </c:FakeRequiredComponent>                                                              
+                    </apex:pageBlockSectionItem>      
+                </apex:pageBlockSection>    
+                
+                <apex:pageBlockSection columns="2" id="activDev" title="Device Information" rendered="{!isActivation}">    
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="Serial Number"/>
+                        <c:GenericLookupFieldComponent medicalRecord="{!MedicalRecord__c}" 
+                            field="Equipment__c"
+                            nameFieldName="Name"                                
+                        />
+                    </apex:pageBlockSectionItem>                
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="{!$ObjectType.MedicalRecord__c.fields.Material__c.label}" for="ActivityDate__c"/>   
+                        <c:FakeRequiredComponent >
+                            <apex:inputField value="{!MedicalRecord__c.Material__c}"/>                                
+                        </c:FakeRequiredComponent>                                                              
+                    </apex:pageBlockSectionItem>   
+                
+                    <apex:inputField value="{!MedicalRecord__c.IsReplacement__c}">
+                        <apex:actionSupport event="onchange" reRender="jspanel,activDev"/>
+                    </apex:inputField>
+                
+                
+                    <apex:pageBlockSectionItem rendered="{!MedicalRecord__c.IsReplacement__c}">
+                        <apex:outputLabel value="Replaced Serial Number"/>
+                        <c:GenericLookupFieldComponent medicalRecord="{!MedicalRecord__c}" 
+                            field="ReplacedDevice__c"
+                            nameFieldName="Name"                                
+                        />
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>    
+                
+                
+                     
+                
+                
+                
+                <apex:pageBlockSection columns="2" id="surgerySurgicalInformation" title="Surgical Information" rendered="{!isSurgery}">    
+                    <apex:inputField value="{!MedicalRecord__c.TechniqueUsed__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.SecuredToBone__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.DrilledToRecessGaugeDepth__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.OtherDrillingDepth__c}"/>
+                        
+                </apex:pageBlockSection>    
+                
+                <apex:pageBlockSection columns="2" id="surgeryElectrodeInsertion" title="Electrode Insertion" rendered="{!isSurgery}">    
+                    <apex:inputField value="{!MedicalRecord__c.AllElectrodesInserted__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.NumberOfElectrodes__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.StandardLessElectrodesReason__c}"/>
+                        
+                    <apex:inputField value="{!MedicalRecord__c.OtherLessElectrodesReason__c}"/>                                                                                                
+                </apex:pageBlockSection>    
+                
+                
+                <!--                    
+                <apex:pageBlockSection columns="2" id="section" title="rest" rendered="false">
+                
+                <apex:repeat value="{!publicFields}" var="publicField" id="rep">
+                <apex:outputField value="{!MedicalRecord__c[publicField]}" rendered="{!CONTAINS($CurrentPage.URL,'&inline=1')   }"/>   
+                <apex:inputField id="inp" value="{!MedicalRecord__c[publicField]}" rendered="{!AND( NOT(CONTAINS($CurrentPage.URL,'&inline=1'))  , (publicField!='Patient__c'), (publicField!='Professional__c'), (publicField!='Equipment__c'), (publicField!='Surgery__c'), (publicField!='') )}"/>
+                
+                
+                <apex:inputField id="Surgery__c" value="{!MedicalRecord__c.Surgery__c}" rendered="{!publicField=='Surgery__c'}" >
+                <apex:actionSupport action="{!changedAction}" event="onchange" rerender="contentBlock,jspanel" />
+                </apex:inputField>
+                
+                </apex:repeat>     
+                </apex:pageBlockSection>
+                -->                
+                
+            </apex:pageBlock>  
+        </apex:form>            
+    </apex:outputPanel>    
+</apex:page>

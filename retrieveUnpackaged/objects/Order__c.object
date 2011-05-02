@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <content>OrderDetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Complaint__c</fullName>
+        <description>/ If a class 1 complaint did trigger a return or replacment order, the complaint needs to be referenced in the order</description>
+        <externalId>false</externalId>
+        <label>Complaint</label>
+        <referenceTo>Case</referenceTo>
+        <relationshipName>R00ND0000003MrGfMAK</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Currency__c</fullName>
+        <description>Order Header / VBAK-WAERK /</description>
+        <externalId>false</externalId>
+        <label>Currency</label>
+        <length>5</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Customer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>R00ND0000003MrGaMAK</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>OrderDate__c</fullName>
+        <description>Order Header / VBKD-BSTDK /</description>
+        <externalId>false</externalId>
+        <label>Order Date</label>
+        <required>false</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>OrderNumber__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Order Header / VBAK-VBELN Sales Document / SAP Order number</description>
+        <externalId>true</externalId>
+        <label>Order Number</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>OrderStatus__c</fullName>
+        <description>/ Status of the order derived from the status of the attached order items and deliveries.
+OpenItem: define the exact rules for deriving the order status</description>
+        <externalId>false</externalId>
+        <label>Order Status</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrderTypeDesc__c</fullName>
+        <description>Order Header / TVAKT-BEZEI /</description>
+        <externalId>false</externalId>
+        <label>Order Type Description</label>
+        <length>20</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrderType__c</fullName>
+        <description>Order Header / VBAK-AUART / Refers to the related order process (e.g. Return Order, Replacment Order, …)</description>
+        <externalId>false</externalId>
+        <label>Order Type</label>
+        <length>4</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Patient__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Patient</label>
+        <referenceTo>Patient__c</referenceTo>
+        <relationshipName>Orders</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PurchaseOrderNumber__c</fullName>
+        <description>Order Header / VBKD-BSTKD / Order number defined and entered by the customer</description>
+        <externalId>false</externalId>
+        <label>Purchase Order Number</label>
+        <length>35</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SalesOrg__c</fullName>
+        <description>Order Header / VBAK-VKORG /</description>
+        <externalId>false</externalId>
+        <label>Sales Organization</label>
+        <length>4</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapCustomerNumber__c</fullName>
+        <description>Order Header / VBAK-KUNNR / Optional  technical field. Not shown in UI</description>
+        <externalId>false</externalId>
+        <label>SAP Customer Number</label>
+        <length>10</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Order</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>OrderType__c</columns>
+        <columns>OrderStatus__c</columns>
+        <columns>Customer__c</columns>
+        <columns>Patient__c</columns>
+        <columns>SalesOrg__c</columns>
+        <columns>PurchaseOrderNumber__c</columns>
+        <columns>Currency__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Order Number</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Orders</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>OrderType__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>OrderStatus__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Customer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Patient__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>SalesOrg__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PurchaseOrderNumber__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Currency__c</customTabListAdditionalFields>
+        <searchFilterFields>OrderType__c</searchFilterFields>
+        <searchFilterFields>OrderStatus__c</searchFilterFields>
+        <searchFilterFields>Customer__c</searchFilterFields>
+        <searchFilterFields>Patient__c</searchFilterFields>
+        <searchFilterFields>SalesOrg__c</searchFilterFields>
+        <searchFilterFields>PurchaseOrderNumber__c</searchFilterFields>
+        <searchFilterFields>Currency__c</searchFilterFields>
+        <searchResultsAdditionalFields>OrderType__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>OrderStatus__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Patient__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>SalesOrg__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PurchaseOrderNumber__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Currency__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

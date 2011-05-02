@@ -1,0 +1,206 @@
+<apex:page extensions="MedicalRecordLookupController" standardController="MedicalRecord__c"  tabStyle="ActivationReport__tab" sidebar="false" showheader="false" title="{!lookupField}">
+<!--
+    <apex:includeScript value="{!'https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js'}"/>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    
+    <script type="text/javascript">
+       var j$ = jQuery.noConflict();
+       
+       j$(document).ready(function(){
+       });
+    </script>
+-->    
+    <script language="javascript">
+       window.onload = new function() 
+       { 
+          // bring popup window to front
+          window.focus(); 
+          var ele=document.getElementById('{!$Component.block.lookupSection.lookupSectionItem.query}');
+          if (ele)
+          {
+             ele.focus();
+          }
+          getMainData();
+       }
+       
+       function getMainData(){
+          var winMain=window.opener;
+          if (null==winMain)
+          {
+             winMain=window.parent.opener;
+          }       
+          var retfunc = function(json) 
+          {
+//              document.getElementById('{!$Component.form.block.section.lookupButton}').disabled = false;              
+              document.getElementById('{!$Component.form.block.medicalDataJson}').value = json;
+              updateFilter();
+          };
+          winMain.setRetFunc(retfunc);
+       }
+       
+       
+       
+    
+       function resultSelected(name, id)
+       {
+           if ('{!$CurrentPage.parameters.idfield}' == '') {
+               alert("standalone" + name + id);
+           } else {       
+//           alert("fillin" + name + " " + id);
+                fillIn(name, id);       
+           }
+       }   
+    
+       function ParentWindowOpen(newLocation)
+       {
+          var winMain=window.opener;
+          if (null==winMain)
+          {
+             winMain=window.parent.opener;
+          }
+          winMain.closeLookupPopup(newLocation);          
+       }
+       
+       function fillIn(name, id)
+       {
+          var winMain=window.opener;
+          if (null==winMain)
+          {
+             winMain=window.parent.opener;
+          }
+          var ele=winMain.document.getElementById('{!$CurrentPage.parameters.namefield}');
+          ele.value=name;
+          ele=winMain.document.getElementById('{!$CurrentPage.parameters.idfield}');
+          ele.value=id;
+          
+          winMain.changedAction();
+          winMain.closeLookupPopup();
+       }
+       
+        function getIdfieldValueValue(name)
+        {
+            var winMain=window.opener;
+            if (null==winMain)
+            {
+                winMain=window.parent.opener;
+            }
+            var ele=winMain.document.getElementById(name);
+            alert(ele.firstChild.value);
+            return ele.firstChild.value;
+        }
+       
+       function CloseWindow()
+       {
+          var winMain=window.opener;
+          if (null==winMain)
+          {
+             winMain=window.parent.opener;
+          }
+          winMain.closeLookupPopup();
+       }
+    </script>
+    
+  <apex:form id="form"  >          
+    
+<apex:outputPanel id="jspanel"> 
+    <apex:outputText value="{!medicalDataJson}" rendered="{!$Organization.Id =='00DM00000008zsoMAA'}"/>
+    <script>  
+        function onPatientSelectReturn() {
+            if ('{!selectedPatient.Name}' != '') {
+                resultSelected('{!selectedPatient.Name}', '{!selectedPatient.Id}');
+            } else {
+                alert("Patient nicht gefunden");
+            }
+        }
+    </script>
+</apex:outputPanel>      
+
+<apex:pageMessages id="errmsgs"/> 
+     <apex:actionFunction name="updateFilter" rerender="FilterCriteria"/>
+
+     
+        <apex:pageBlock id="block">   
+          <apex:inputHidden id="medicalDataJson" value="{!medicalDataJson}" />       
+          
+          <apex:pageBlockSection title="Filter Criteria" id="FilterCriteria" columns="1" collapsible="false">
+              <apex:repeat value="{!filterCriteria}" var="filter">
+                  <apex:pageBlockSectionItem >
+                      <apex:outputLabel value="{!filter[0]}" for="filter"/>  
+                      <apex:outputText value="{!filter[1]}" id="filter"/> 
+                  </apex:pageBlockSectionItem>
+              </apex:repeat>
+          </apex:pageBlockSection>
+
+
+
+          <apex:pageBlockSection title="Patient Select" id="PatientSelectSection" columns="1" collapsible="true" rendered="{!lookupField=='Patient__c'}">
+              <apex:pageBlockSectionItem >
+                  <apex:outputLabel value="Patient Id" for="PatientId"/>  
+                  <apex:inputText value="{!patient.PatientId__c}" id="PatientId"/> 
+              </apex:pageBlockSectionItem>
+              <apex:commandButton value="Select" action="{!runPatientSelect}" oncomplete="onPatientSelectReturn();" reRender="jspanel,errmsgs"/>
+          </apex:pageBlockSection>
+          <apex:pageBlockSection title="Patient Detailed Search" id="PatientDetailedSearchSection" columns="1" collapsible="true" rendered="{!lookupField=='Patient__c'}">
+              <apex:inputField value="{!patient.LastName__c}" id="LastName"/> 
+              <apex:inputField value="{!patient.Birthdate__c}" id="BirthDate__c"/> 
+             
+              <apex:pageBlockSectionItem >
+                  <apex:outputLabel value="Clinic Patient Id" for="clinicPatientId"/>
+                  <apex:inputText value="{!clinicPatientId}" id="clinicPatientId"/> 
+              </apex:pageBlockSectionItem>
+              <apex:commandButton value="Search" action="{!runDetailSearch}"/>
+          </apex:pageBlockSection>
+
+         
+          <apex:pageBlockSection title="Lookup" id="lookupSection" columns="1" collapsible="true" rendered="{!lookupField!='Patient__c'}">
+              <apex:pageBlockSectionItem id="lookupSectionItem">
+                  <apex:outputLabel value="Search for" for="query"/>
+                  <apex:inputText value="{!query}" id="query"/> 
+              </apex:pageBlockSectionItem>
+
+              <apex:commandButton value="Go" action="{!runQuery}" id="lookupButton" disabled="false"/>
+          </apex:pageBlockSection>
+
+          <apex:pageBlockSection id="resultPageBlockSection" title="Results" columns="1" collapsible="true">
+              <apex:pageBlockTable value="{!resultItems}" var="item" first="{!(pageNumber * 5) -5}" rows="5" rendered="{!totalPageNumber > 0}">
+                <apex:column >
+                  <apex:facet name="header">{!resultFieldList[0][1]}</apex:facet>   
+                  <apex:outputLink value="#" onclick="resultSelected('{!item[$CurrentPage.parameters.NameFieldName]}', '{!item['Id']}')">{!item[resultFieldList[0][0]]}</apex:outputLink>       
+                </apex:column>
+                <apex:column >
+                  <apex:facet name="header">{!resultFieldList[1][1]}</apex:facet>   
+                  <apex:outputLink value="#" onclick="resultSelected('{!item[$CurrentPage.parameters.NameFieldName]}', '{!item['Id']}')">{!item[resultFieldList[1][0]]}</apex:outputLink>       
+                </apex:column>
+                
+                <apex:repeat value="{!resultFieldList}" var="resultField" first="2">
+                    <apex:column >
+                        <apex:facet name="header">{!resultField[1]}</apex:facet>
+                        <apex:outputText value="{!item[resultField[0]]}"/>                  
+                    </apex:column>
+                </apex:repeat>
+                
+              </apex:pageBlockTable>   
+          </apex:pageBlockSection>
+          
+        <apex:panelGrid columns="7" rendered="{!totalPageNumber > 0}">
+          <apex:outputText />
+          <apex:outputText />
+            <apex:commandLink action="{!resultPreviousPage}" rendered="{!pageNumber > 1}"  >Previous</apex:commandlink>
+            <apex:commandLink action="{!resultNextPage}" rendered="{!pageNumber < totalPageNumber }">Next</apex:commandlink>
+          <apex:outputText />
+            <apex:outputText style="font-style:italic" value="Page #: {0} out of {1}" rendered="{!'true'}">
+                <apex:param value="{!pageNumber}"/>
+                <apex:param value="{!totalPageNumber}"/>
+            </apex:outputText> 
+        </apex:panelGrid>
+
+        </apex:pageBlock>
+        <apex:pageBlock ><apex:pageBlockSection columns="1" rendered="{!lookupField=='Patient__c'}">
+              <button type="button" onclick="ParentWindowOpen('{!URLFOR($Action.Patient__c.New)}');">Create New Patient</button>
+        </apex:pageBlockSection></apex:pageBlock>        
+        <button type="button" onclick="CloseWindow();">Close Window</button>
+        <button type="button" onclick="resultSelected(null, null);">Clear Field</button>        
+
+   </apex:form>
+</apex:page>

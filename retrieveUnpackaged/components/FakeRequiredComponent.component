@@ -1,0 +1,8 @@
+<apex:component >
+    <apex:panelGroup layout="block">
+        <div class="requiredInput">
+            <div class="requiredBlock"></div>              
+            <apex:componentBody />                        
+        </div>
+    </apex:panelGroup>
+</apex:component>

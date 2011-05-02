@@ -1,0 +1,20 @@
+Deployment:
+
+1) retrieve and deploy profiles
+2) create users
+3) Add the Logo and the Home Page Image:
+
+- Create new Documents (ABAG_start.jpg, companylogo.jpg)
+- Customize -> Home -> Home Page Component
+  Create custom compnent: company logo, ABAG_start 
+- Set correct Object Id in: AB AG Patient Management System
+- Customize Home Page Layout
+
+Manually:
+- Security Controls --> Field Accessibility
+- Customize --> Contact --> Set New Contact Button override!
+- Develop --> Custom Settings --> Manage SystemId
+- Profile Settings --> hidden tabs doesnt work
+- Add the MASTER_ACCOUNT
+- Sharing Settings for Patients
+- Sharing Settings for Cases

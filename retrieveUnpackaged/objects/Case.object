@@ -1,0 +1,1671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <businessProcesses>
+        <fullName>Complaint Process</fullName>
+        <description>The Complaint Process</description>
+        <isActive>true</isActive>
+        <values>
+            <fullName>Action-Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed-Duplicate-Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Closed-Not Resolved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Released-to-Complaint Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-explant</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-external-equipment-exchange</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-information-provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-medical-treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-programming</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resolved-without-intervention</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>To be verified by Complaint Manager</fullName>
+            <default>false</default>
+        </values>
+    </businessProcesses>
+    <fields>
+        <fullName>AffectedPatient__c</fullName>
+        <description>/ Affected Patient in case of a complaint</description>
+        <externalId>false</externalId>
+        <label>Affected Patient</label>
+        <referenceTo>Patient__c</referenceTo>
+        <relationshipLabel>Complaints</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AwarenessDate__c</fullName>
+        <description>/ when did we know about it, complaint manager is involved first. 4 day period starts to run</description>
+        <externalId>false</externalId>
+        <label>Date First Aware</label>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ComplaintClassification__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Complaint Classification</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Class 1</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Class 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Class 3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Class 4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>ContactInformation__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Information</label>
+        <length>4000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Customer__c</fullName>
+        <externalId>false</externalId>
+        <label>Reporter&apos;s Center / Facility</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Complaints</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>DueDate__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Due Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>EquipmentMaterialNumber__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <formula>Equipment__r.Material__r.MaterialNumber__c</formula>
+        <label>Material Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <description>/ The Implant or Processor device</description>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Complaints</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>FollowUpAction__c</fullName>
+        <externalId>false</externalId>
+        <label>Follow-up Action</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>ImplantType__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Implant Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Cochlear Implant</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Middle Ear Implant</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>InvolveExplant__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Involve Potential Device Explant</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>IssueDate__c</fullName>
+        <description>/ When did the event happen (dropping sound)</description>
+        <externalId>false</externalId>
+        <label>Issue / Event Date</label>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Material__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Model Number</label>
+        <referenceTo>Material__c</referenceTo>
+        <relationshipLabel>Complaints</relationshipLabel>
+        <relationshipName>Cases</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>NetRegID__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Net Regulus ID</label>
+        <length>18</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PrimarySymptomCode__c</fullName>
+        <description>Primary Symptom Classification Code according toe Code List</description>
+        <externalId>false</externalId>
+        <label>Symptom Category</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Accessory Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Battery / Charger Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cable Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Clinician Programming Equipment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Headpiece Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Implantable Cochlear Stimulator Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Service Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Sound Processor Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Surgical Equipment Issues</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Public__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicating whether this Complaint is visible to all users or not</description>
+        <externalId>false</externalId>
+        <label>Public</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ReportingPatient__c</fullName>
+        <description>/ Patient that reported this complaint</description>
+        <externalId>false</externalId>
+        <label>Reported by Patient or</label>
+        <referenceTo>Patient__c</referenceTo>
+        <relationshipLabel>Complaints (Reported By Patient)</relationshipLabel>
+        <relationshipName>R00NM0000000K3z3MAC</relationshipName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ReturnOrder__c</fullName>
+        <description>/ No, Return, Relacement</description>
+        <externalId>false</externalId>
+        <label>Return Order</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Return for Credit</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Replacement</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SecondarySymptomCode__c</fullName>
+        <description>Depending Picklist</description>
+        <externalId>false</externalId>
+        <label>Symptom Code</label>
+        <picklist>
+            <controllingField>PrimarySymptomCode__c</controllingField>
+            <picklistValues>
+                <fullName>1042 / ACC-AA Pak Borken Cable at Housing (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1042 / ACC-AA Pak Borken Cable at Huggie (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>900	/ ACC-broken,cracked / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1423 / B/C-Battery Fit problem -loose/tight	/ A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>914	/ B/C-Battery life-charge problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1401 / CABLE-Bent/broken pins / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1045 / CABLE-Cable clip malfunction / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4111 / ACC-Carrying Case-Pouch issues / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1367 / ACC-Hardware not functioning / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1368 / ACC-Intermittent / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>889 / ACC-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3833 / ACC-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>890 / ACC-Size not right / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>892 / ACC-Sound quality / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1385 / ACC-Visible damage / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Accessory Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1400 / B/C-Bent/broken pins / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>926 / B/C-Charger LED problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1391 / B/C-Corrosion / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1407 / B/C-Hardware got wet / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1371 / B/C-Hardware not functioning / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1395 / B/C-Hardware warm/hot / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>932 / B/C-Intermittent / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4113 / B/C-OEPO problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>925 / B/C-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3834 / B/C-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1386 / B/C-Visible damage-Discoloration-Cosmetic issue / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Battery / Charger Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1372 / CABLE-Discolored / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1042 / CABLE-Frayed or broken cable / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1373 / CABLE-Hardware not functioning / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1047 / CABLE-Intermittent / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4114 / CABLE-Length / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1041 / CABLE-Loose cable in SP or HP / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1040 / CABLE-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3835 / CABLE-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1405 / CABLE-Skin irritation/redness/soreness / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1049 / CABLE-Stiff cable / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Cable Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3232 / PROG-Bent/broken pins / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3238 / PROG-Computer-Laptop Problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3240 / PROG-Corrosion / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3241 / PROG-Hardware not functioning / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3236 / PROG-Hardware warm/hot / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3242 / PROG-Intermittent connection / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3243 / PROG-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3836 / PROG-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4166 / PROG-Programming Cable Problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3234 / PROG-Visible damage / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Clinician Programming Equipment</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3809 / HP-BHP Broken cable at Connector to SP (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3809 / HP-BHP Broken cable at HP Housing (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3810 / HP-BHP Broken/Cracked Connector into SP (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3809 / HP-BHP Damaged Insulation &amp; Broken Wire (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1387 / HP-BHP Deep Dents/Bite Marks on Housing (No Return) / A30 / Complaint - Non Return</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3809 / HP-Broken HP Cable / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3810 / HP-Broken or Loose Connector  / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4117 / HP-Broken-Cracked-Damaged / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4115 / HP-Cover Cap Issue / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1099 / HP-Elastomer (rubber ring on PHP) issue / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1383 / HP-Hardware not functioning / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1382 / HP-HP retention issues / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1092 / HP-Intermittent or No Lock / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1108 / HP-Magnet polarity / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1408 / HP-Moisture / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1104 / HP-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3837 / HP-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1109 / HP-Skin irritation/redness / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4116 / HP-Sound Quality / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1387 / HP-Visible damage / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Headpiece Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4101 / ICS-Explant Med-Surg Related / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Implantable Cochlear Stimulator Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3829 / ICS-OR Return / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Implantable Cochlear Stimulator Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1128 / ICS-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Implantable Cochlear Stimulator Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1134 / ICS-Potential device failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Implantable Cochlear Stimulator Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3832 / OT-Externals for Potential Device Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Other Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3824 / OT-Recall / A26 / Complaint - Recall</fullName>
+                <controllingFieldValues>Other Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1314 / SVC-Exchange, opened / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1330 / SVC-Exchange, unopened / A1 / Non Complaint - Unopened/Unused</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1312 / SVC-Not satisfied with product / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1338 / SVC-Order Processing Error / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1333 / SVC-Other / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1311 / SVC-Package arrived - customer cannot locate / A1 / Non Complaint - Unopened/Unused</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1327 / SVC-Package damaged in shipment / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4159 / SVC-Processor Direct issues / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1331 / SVC-Product labeling does not match content / A0 /Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1330 / SVC-Return for credit / A1 / Non Complaint - Unopened/Unused</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1335 / SVC-Shipping error / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1334 / SVC-Upgrade / A0 / Non Complaint - Opened/Used</fullName>
+                <controllingFieldValues>Service Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1225 / SP-Alarm not functioning properly / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1229 / SP-Aux post issue / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1456 / SP-Battery contact issue / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4150 / SP-Battery Latch Broken / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1224 / SP-Battery will not lock into place / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1392 / SP-Corrosion / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4144 / SP-Cracked or Damaged Case / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1254 / SP-Dial problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1221 / SP-Earhook - loose or damaged / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1409 / SP-Hardware got wet-moisture / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1238 / SP-Hardware not functioning / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1394 / SP-Hardware warm/hot / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1240 / SP-Intermittent or No Lock / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1418 / SP-LED dysfunctional / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4152 / SP-O-Ring Issue / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1247 / SP-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3839 / SP-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4151 / SP-Paint Peeling or Discolored  / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4149 / SP-RF Connector Problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4145 / SP-Sound Quality / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1249 / SP-Static with external input (patch cable, aux mic) / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1227 / SP-Toggle or Switch Problem / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1388 / SP-Visible damage / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Sound Processor Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1380 / SURG-Bent-Broken-Cracked / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Surgical Equipment Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>1295 / SURG-Other / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Surgical Equipment Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3840 / SURG-Out-of-Box Failure / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Surgical Equipment Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4155 / SURG-Sterilization / A11 / Complaint - Product related</fullName>
+                <controllingFieldValues>Surgical Equipment Issues</controllingFieldValues>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SoftwareType__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Software Type/Version</label>
+        <picklist>
+            <picklistValues>
+                <fullName>BEPSNet</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>RSPOM1.3</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SClin1.08</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SoundWave1.4.077</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SoundWave1.4.098</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SoundWave1.6.8</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SoundWave1.6.9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>SoundWave2.0.27</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <listViews>
+        <fullName>AllOpenCases</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>CASES.RECORDTYPE</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Equipment__c</columns>
+        <columns>Material__c</columns>
+        <columns>ReturnOrder__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>AffectedPatient__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>All Open Complaints</label>
+    </listViews>
+    <listViews>
+        <fullName>MyCases</fullName>
+        <filterScope>Mine</filterScope>
+        <label>My Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>MyOpenCases</fullName>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>CASES.CLOSED</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>My Open Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>PotentialDeviceExplant</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>InvolveExplant__c</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>Equipment__c</columns>
+        <columns>EquipmentMaterialNumber__c</columns>
+        <columns>ReturnOrder__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>AffectedPatient__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>InvolveExplant__c</field>
+            <operation>equals</operation>
+            <value>Yes</value>
+        </filters>
+        <label>Potential Device Explant</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Complaint</fullName>
+        <active>true</active>
+        <businessProcess>Complaint Process</businessProcess>
+        <label>Complaint</label>
+        <picklistValues>
+            <picklist>ComplaintClassification__c</picklist>
+            <values>
+                <fullName>Class 1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Class 2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Class 3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Class 4</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ImplantType__c</picklist>
+            <values>
+                <fullName>Cochlear Implant</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Middle Ear Implant</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>InvolveExplant__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Origin</picklist>
+            <values>
+                <fullName>Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fax</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mail</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Phone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Web</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PrimarySymptomCode__c</picklist>
+            <values>
+                <fullName>Accessory Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Battery %2F Charger Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cable Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clinician Programming Equipment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Headpiece Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implantable Cochlear Stimulator Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sound Processor Issues</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surgical Equipment Issues</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Priority</picklist>
+            <values>
+                <fullName>High</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Low</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Medium</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reason</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>ReturnOrder__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Replacement</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Return for Credit</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SecondarySymptomCode__c</picklist>
+            <values>
+                <fullName>1040 %2F CABLE-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1041 %2F CABLE-Loose cable in SP or HP %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1042 %2F ACC-AA Pak Borken Cable at Housing %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1042 %2F ACC-AA Pak Borken Cable at Huggie %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1042 %2F CABLE-Frayed or broken cable %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1045 %2F CABLE-Cable clip malfunction %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1047 %2F CABLE-Intermittent %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1049 %2F CABLE-Stiff cable %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1092 %2F HP-Intermittent or No Lock %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1099 %2F HP-Elastomer %28rubber ring on PHP%29 issue %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1104 %2F HP-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1108 %2F HP-Magnet polarity %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1109 %2F HP-Skin irritation%2Fredness %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1128 %2F ICS-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1134 %2F ICS-Potential device failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1221 %2F SP-Earhook - loose or damaged %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1224 %2F SP-Battery will not lock into place %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1225 %2F SP-Alarm not functioning properly %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1227 %2F SP-Toggle or Switch Problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1229 %2F SP-Aux post issue %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1238 %2F SP-Hardware not functioning %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1240 %2F SP-Intermittent or No Lock %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1247 %2F SP-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1249 %2F SP-Static with external input %28patch cable%2C aux mic%29 %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1254 %2F SP-Dial problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1295 %2F SURG-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1311 %2F SVC-Package arrived - customer cannot locate %2F A1 %2F Non Complaint - Unopened%2FUnused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1312 %2F SVC-Not satisfied with product %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1314 %2F SVC-Exchange%2C opened %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1327 %2F SVC-Package damaged in shipment %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1330 %2F SVC-Exchange%2C unopened %2F A1 %2F Non Complaint - Unopened%2FUnused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1330 %2F SVC-Return for credit %2F A1 %2F Non Complaint - Unopened%2FUnused</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1331 %2F SVC-Product labeling does not match content %2F A0 %2FNon Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1333 %2F SVC-Other %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1334 %2F SVC-Upgrade %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1335 %2F SVC-Shipping error %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1338 %2F SVC-Order Processing Error %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1367 %2F ACC-Hardware not functioning %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1368 %2F ACC-Intermittent %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1371 %2F B%2FC-Hardware not functioning %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1372 %2F CABLE-Discolored %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1373 %2F CABLE-Hardware not functioning %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1380 %2F SURG-Bent-Broken-Cracked %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1382 %2F HP-HP retention issues %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1383 %2F HP-Hardware not functioning %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1385 %2F ACC-Visible damage %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1386 %2F B%2FC-Visible damage-Discoloration-Cosmetic issue %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1387 %2F HP-BHP Deep Dents%2FBite Marks on Housing %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1387 %2F HP-Visible damage %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1388 %2F SP-Visible damage %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1391 %2F B%2FC-Corrosion %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1392 %2F SP-Corrosion %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1394 %2F SP-Hardware warm%2Fhot %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1395 %2F B%2FC-Hardware warm%2Fhot %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1400 %2F B%2FC-Bent%2Fbroken pins %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1401 %2F CABLE-Bent%2Fbroken pins %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1405 %2F CABLE-Skin irritation%2Fredness%2Fsoreness %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1407 %2F B%2FC-Hardware got wet %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1408 %2F HP-Moisture %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1409 %2F SP-Hardware got wet-moisture %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1418 %2F SP-LED dysfunctional %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1423 %2F B%2FC-Battery Fit problem -loose%2Ftight%09%2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1456 %2F SP-Battery contact issue %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3232 %2F PROG-Bent%2Fbroken pins %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3234 %2F PROG-Visible damage %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3236 %2F PROG-Hardware warm%2Fhot %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3238 %2F PROG-Computer-Laptop Problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3240 %2F PROG-Corrosion %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3241 %2F PROG-Hardware not functioning %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3242 %2F PROG-Intermittent connection %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3243 %2F PROG-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3809 %2F HP-BHP Broken cable at Connector to SP %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3809 %2F HP-BHP Broken cable at HP Housing %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3809 %2F HP-BHP Damaged Insulation %26 Broken Wire %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3809 %2F HP-Broken HP Cable %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3810 %2F HP-BHP Broken%2FCracked Connector into SP %28No Return%29 %2F A30 %2F Complaint - Non Return</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3810 %2F HP-Broken or Loose Connector  %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3824 %2F OT-Recall %2F A26 %2F Complaint - Recall</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3829 %2F ICS-OR Return %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3832 %2F OT-Externals for Potential Device Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3833 %2F ACC-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3834 %2F B%2FC-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3835 %2F CABLE-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3836 %2F PROG-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3837 %2F HP-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3839 %2F SP-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3840 %2F SURG-Out-of-Box Failure %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4101 %2F ICS-Explant Med-Surg Related %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4111 %2F ACC-Carrying Case-Pouch issues %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4113 %2F B%2FC-OEPO problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4114 %2F CABLE-Length %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4115 %2F HP-Cover Cap Issue %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4116 %2F HP-Sound Quality %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4117 %2F HP-Broken-Cracked-Damaged %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4144 %2F SP-Cracked or Damaged Case %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4145 %2F SP-Sound Quality %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4149 %2F SP-RF Connector Problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4150 %2F SP-Battery Latch Broken %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4151 %2F SP-Paint Peeling or Discolored  %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4152 %2F SP-O-Ring Issue %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4155 %2F SURG-Sterilization %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4159 %2F SVC-Processor Direct issues %2F A0 %2F Non Complaint - Opened%2FUsed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4166 %2F PROG-Programming Cable Problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>889 %2F ACC-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>890 %2F ACC-Size not right %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>892 %2F ACC-Sound quality %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>900%09%2F ACC-broken%2Ccracked %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>914%09%2F B%2FC-Battery life-charge problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>925 %2F B%2FC-Other %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>926 %2F B%2FC-Charger LED problem %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>932 %2F B%2FC-Intermittent %2F A11 %2F Complaint - Product related</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SoftwareType__c</picklist>
+            <values>
+                <fullName>BEPSNet</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RSPOM1%2E3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SClin1%2E08</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SoundWave1%2E4%2E077</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SoundWave1%2E4%2E098</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SoundWave1%2E6%2E8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SoundWave1%2E6%2E9</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SoundWave2%2E0%2E27</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Type</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <validationRules>
+        <fullName>MandatoryComplaintReporter</fullName>
+        <active>true</active>
+        <description>Either a Patient, a Contact or a Clinic needs to be set as the reporter of a complaint</description>
+        <errorConditionFormula>AND ( ISBLANK(ReportingPatient__c ) , ISBLANK( ContactId ) ,ISBLANK( Customer__c  ) )</errorConditionFormula>
+        <errorMessage>Please enter either the reporting patient, the reporting contact or the reporting center/clinic</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>MandatorySymptomCodes</fullName>
+        <active>true</active>
+        <description>if the equipment number is filled in, the symptom codes are mandatory, otherwise not</description>
+        <errorConditionFormula>AND ( NOT( ISBLANK( Equipment__c ) ) , OR ( ISBLANK( TEXT(PrimarySymptomCode__c) ) , ISBLANK( TEXT(SecondarySymptomCode__c ))  ) )</errorConditionFormula>
+        <errorMessage>Please enter the Symptom Category and the Symptom Code for the selected Serial Number</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SymptomInfoWithoutSerialNumber</fullName>
+        <active>true</active>
+        <description>The symptom information should not be entered without choosing a serial number</description>
+        <errorConditionFormula>AND( ISBLANK( Equipment__c  ), NOT(ISBLANK( TEXT(PrimarySymptomCode__c)  )) )</errorConditionFormula>
+        <errorMessage>A Symptom Category and Code should only be selected if also a Serial Number has been entered</errorMessage>
+    </validationRules>
+</CustomObject>

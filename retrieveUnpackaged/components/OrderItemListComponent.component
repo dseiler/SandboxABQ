@@ -1,0 +1,25 @@
+<apex:component controller="OrderItemListComponentController">
+    <apex:attribute name="orderItems" type="OrderItem__c[]" description="List of OrderItems" />
+    <apex:attribute name="itemType" type="string" description="itemType: Open Item, Delivery Item, Return Item" />
+    <apex:attribute name="fieldList" assignTo="{!fieldList}" type="String[]" description="" />
+
+
+    <apex:pageBlock title="{!itemType}">
+        <apex:pageBlockTable value="{!orderItems}" var="item" title="{!itemType}">
+            <apex:column >
+                <apex:facet name="header">Name</apex:facet>
+                <apex:outputLink value="../../{!item.Id}">
+                    <apex:outputText value="{!item.Name}"/>
+                </apex:outputLink>
+            </apex:column>
+                             
+            <apex:repeat value="{!fields}" var="field">
+                <apex:column >
+                    <apex:facet name="header">{!field[1]}</apex:facet>
+                    <apex:outputText value="{!item[field[0]]}"/>
+                </apex:column>
+            </apex:repeat>
+            
+        </apex:pageBlockTable> 
+    </apex:pageBlock>
+</apex:component>

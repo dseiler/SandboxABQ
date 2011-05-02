@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>false</enableReports>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Order Items</relationshipLabel>
+        <relationshipName>OrderItemEquipment</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ExternalId__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>/</description>
+        <externalId>true</externalId>
+        <label>External Id</label>
+        <length>40</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>ModelNumber__c</fullName>
+        <externalId>false</externalId>
+        <formula>Equipment__r.Material__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Model Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OrderItem__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Order Item Number</label>
+        <referenceTo>OrderItem__c</referenceTo>
+        <relationshipLabel>Equipments</relationshipLabel>
+        <relationshipName>OrderItemEquipments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>SapDeliveryNumber__c</fullName>
+        <description>/ Optional ?technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>OrderItem__r.Delivery__r.DeliveryNumber__c</formula>
+        <label>SAP Delivery Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapEquipmentNumber__c</fullName>
+        <description>Equipment / OBJK-SERNR / Optional technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>Equipment__r.EquipmentNumber__c</formula>
+        <label>SAP Equipment Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapMaterialDesc__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <formula>OrderItem__r.Material__r.MaterialDesc__c</formula>
+        <label>SAP Material Description</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapMaterialNumber__c</fullName>
+        <description>Open Item / VBAP-MATNR
+Return Item / VBAP-MATNR
+Delivery Item / LIPS -MATNR / Optional ?technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>OrderItem__r.Material__r.MaterialNumber__c</formula>
+        <label>SAP Material Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapOrderItemNumber__c</fullName>
+        <description>/ Optional technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>OrderItem__r.ItemNumber__c</formula>
+        <label>SAP Order Item Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SapOrderNumber__c</fullName>
+        <description>/ Optional ?technical field. Not shown in the UI</description>
+        <externalId>false</externalId>
+        <formula>OrderItem__r.Order__r.OrderNumber__c</formula>
+        <label>SAP Order Number</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Order Item Equipment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>X{000000000}</displayFormat>
+        <label>Order Item Equipment Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Order Item Equipments</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields xsi:nil="true"/>
+        <searchFilterFields xsi:nil="true"/>
+        <searchResultsAdditionalFields xsi:nil="true"/>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

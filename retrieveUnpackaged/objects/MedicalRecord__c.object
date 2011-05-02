@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <content>MedicalRecord</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>MedicalRecord</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>ActivityDate__c</fullName>
+        <description>/ The date of the surgery/device activation</description>
+        <externalId>false</externalId>
+        <label>Surgery / Activation Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>AllElectrodesInserted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>All stimulating electrodes inserted</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AudPositioner__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Aud. Positioner</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Customer__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Customer</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipName>MedicalRecords</relationshipName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>DrilledToRecessGaugeDepth__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Drilled to Depth of Recess Gauge</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>EquipmentMaterialNumber__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <formula>Equipment__r.Material__r.MaterialNumber__c</formula>
+        <label>Material Number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Equipment__c</fullName>
+        <description>/ The Implant or Processor device</description>
+        <externalId>false</externalId>
+        <label>Serial Number</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Medical Records (Device)</relationshipLabel>
+        <relationshipName>MedicalRecords</relationshipName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ImplantedEar__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Implanted Ear</label>
+        <picklist>
+            <picklistValues>
+                <fullName>right</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>left</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>IsReplacement__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Device Replacment</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LegacySystemName__c</fullName>
+        <description>TBD /</description>
+        <externalId>false</externalId>
+        <label>Legacy System Name</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Material__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Model Number</label>
+        <referenceTo>Material__c</referenceTo>
+        <relationshipLabel>MedicalRecords</relationshipLabel>
+        <relationshipName>MedicalRecords</relationshipName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>MedicalRecordIdLs__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>ExternalMedicalRecordId /</description>
+        <externalId>true</externalId>
+        <label>MedicalRecord Id LS</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>MedicalRecordId__c</fullName>
+        <displayFormat>M{000000000}</displayFormat>
+        <externalId>true</externalId>
+        <label>MedicalRecord Id</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </fields>
+    <fields>
+        <fullName>NumberOfElectrodes__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Number of electrodes inserted</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherDrillingDepth__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Other Drilling Depth of Recess im mm</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OtherLessElectrodesReason__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Other electrodes reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Patient__c</fullName>
+        <description>MasterDetail(Order__c, OrderItems) / Patient this Operative/Registration report refers to</description>
+        <externalId>false</externalId>
+        <label>Patient</label>
+        <referenceTo>Patient__c</referenceTo>
+        <relationshipLabel>Medical Records</relationshipLabel>
+        <relationshipName>MedicalRecords</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <trackHistory>true</trackHistory>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Professional__c</fullName>
+        <description>/ ?Activation Report? ==&gt; Audiologist
+?Operative Report? ==&gt;Surgeon</description>
+        <externalId>false</externalId>
+        <label>Professional</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>MedicalRecords</relationshipName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>RecordTypeLabel__c</fullName>
+        <description>Formula field for translating the record type in a readable label</description>
+        <externalId>false</externalId>
+        <formula>IF(RecordTypeId==&quot;012M0000000Ch4d&quot;, &quot;Product Registration&quot;,IF(RecordTypeId==&quot;012M0000000Ch4e&quot;, &quot;Surgery Report&quot;,&quot;Other&quot;))</formula>
+        <label>Record Type Label</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ReplacedDevice__c</fullName>
+        <externalId>false</externalId>
+        <label>Device to be replaced</label>
+        <referenceTo>Equipment__c</referenceTo>
+        <relationshipLabel>Medical Records (Device to be replaced)</relationshipLabel>
+        <relationshipName>MedicalRecords2</relationshipName>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>SalesOrg__c</fullName>
+        <defaultValue>TEXT(4300)</defaultValue>
+        <description>Required field by the iBolt integration. At the moment the value is set to 4300</description>
+        <externalId>false</externalId>
+        <label>Sales Organization</label>
+        <length>4</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SecuredToBone__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Secured to Bone</label>
+        <trackHistory>true</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>StandardLessElectrodesReason__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Reason for less electrodes</label>
+        <picklist>
+            <picklistValues>
+                <fullName>cochlear ossification</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>cochlear anatomy</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>malformed/mondini malformation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>SurgeryType__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Surgery Type</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Implantation</fullName>
+                <default>true</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Explantation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Reimplantation</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>TechniqueUsed__c</fullName>
+        <description>/</description>
+        <externalId>false</externalId>
+        <label>Technique Used</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Minimalaccess-incision&lt;6cm</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Traditionalpostauricularincision</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Traditional postauricular incision</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <label>Medical Record</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>RECORDTYPE</columns>
+        <columns>MedicalRecordId__c</columns>
+        <columns>NAME</columns>
+        <columns>Patient__c</columns>
+        <columns>Professional__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>NoSerialNumber</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>NAME</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>Customer__c</columns>
+        <columns>ActivityDate__c</columns>
+        <columns>Professional__c</columns>
+        <columns>Equipment__c</columns>
+        <columns>Material__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Equipment__c</field>
+            <operation>equals</operation>
+            <value>NULL</value>
+        </filters>
+        <filters>
+            <field>Equipment__c</field>
+            <operation>equals</operation>
+        </filters>
+        <label>No Serial Number</label>
+    </listViews>
+    <nameField>
+        <label>Name</label>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Medical Records</pluralLabel>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>ActivationReport</fullName>
+        <active>true</active>
+        <label>Product Registration</label>
+        <picklistValues>
+            <picklist>ImplantedEar__c</picklist>
+            <values>
+                <fullName>left</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>right</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>TechniqueUsed__c</picklist>
+            <values>
+                <fullName>Minimalaccess-incision%3C6cm</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional postauricular incision</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>SurgeryReport</fullName>
+        <active>true</active>
+        <label>Surgery Report</label>
+        <picklistValues>
+            <picklist>ImplantedEar__c</picklist>
+            <values>
+                <fullName>left</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>right</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>StandardLessElectrodesReason__c</picklist>
+            <values>
+                <fullName>cochlear anatomy</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>cochlear ossification</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>malformed%2Fmondini malformation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>SurgeryType__c</picklist>
+            <values>
+                <fullName>Explantation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Implantation</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Reimplantation</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>TechniqueUsed__c</picklist>
+            <values>
+                <fullName>Minimalaccess-incision%3C6cm</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Traditional postauricular incision</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>RECORDTYPE</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Customer__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Patient__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Professional__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ActivityDate__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Equipment__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>RECORDTYPE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Customer__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Patient__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Professional__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ActivityDate__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Equipment__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>RECORDTYPE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Customer__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Patient__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Professional__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ActivityDate__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Equipment__c</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>RECORDTYPE</searchFilterFields>
+        <searchFilterFields>Customer__c</searchFilterFields>
+        <searchFilterFields>Patient__c</searchFilterFields>
+        <searchFilterFields>Professional__c</searchFilterFields>
+        <searchFilterFields>ActivityDate__c</searchFilterFields>
+        <searchFilterFields>Equipment__c</searchFilterFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Customer__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Patient__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Professional__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ActivityDate__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Equipment__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>ActivityDate</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( ActivityDate__c )</errorConditionFormula>
+        <errorMessage>Date has to be specified</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>CustomerNumber</fullName>
+        <active>false</active>
+        <errorConditionFormula>ISBLANK(Customer__c)</errorConditionFormula>
+        <errorMessage>Customer has to be filled</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ImplantedEar</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND((  BEGINS(RecordTypeId,&quot;012M0000000Ch4e&quot;)) , ISPICKVAL( ImplantedEar__c , &apos;&apos;))</errorConditionFormula>
+        <errorMessage>Implented Ear has to be specified</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Material</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK(  Material__c )</errorConditionFormula>
+        <errorMessage>Model Number has to be specified</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SurgeryType</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(( RecordTypeId  = &quot;012D0000000MRmo&quot;) ,    ISPICKVAL(SurgeryType__c,&apos;&apos; ))</errorConditionFormula>
+        <errorMessage>SurgeryType has to be specified</errorMessage>
+    </validationRules>
+</CustomObject>
