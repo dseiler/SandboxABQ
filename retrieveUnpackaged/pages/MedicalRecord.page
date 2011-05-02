@@ -158,8 +158,10 @@
                 
                 
                 <apex:pageBlockSection columns="2" id="surgeryClinicInformation" title="Clinic Information" rendered="{!OR(isSurgery,isActivation)}">    
-                    <apex:inputField value="{!MedicalRecord__c.Customer__c}"/>
-                        
+                    <apex:inputField value="{!MedicalRecord__c.Customer__c}">
+                        <apex:actionFunction action="{!changedAction}" name="changedAction" rerender="surgeryClinicInformation,jspanel" />
+                    </apex:inputField>    
+                    
                     <apex:inputField value="{!MedicalRecord__c.Professional__c}"/>                        
 
                     <apex:inputField value="{!custPatient.ClinicPatientId__c}"/>                        

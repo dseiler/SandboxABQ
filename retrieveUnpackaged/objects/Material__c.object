@@ -1680,6 +1680,8 @@
         <columns>MaterialDesc__c</columns>
         <columns>SalesText__c</columns>
         <columns>SalesUnit__c</columns>
+        <columns>MaterialNumber__c</columns>
+        <columns>ModelNo__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
